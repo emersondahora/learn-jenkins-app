@@ -26,7 +26,7 @@ pipeline {
             }
         }
 
-        */
+        
         stage('Run Tests') {
             parallel {
                 stage('Unit Test') {
@@ -74,6 +74,7 @@ pipeline {
                 }
             }
         }
+        */
         stage('Deploy') {
             agent {
                 docker {
@@ -86,6 +87,7 @@ pipeline {
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                     node_modules/.bin/netlify status
+                    node_modules/.bin/netlify deploy --dir=build --prod
                 '''
             }
         }
