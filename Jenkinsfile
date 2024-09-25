@@ -4,6 +4,7 @@ pipeline {
     stages {
         
         stage('Build') {
+            /*
             agent {
                 docker {
                     image 'node:18-alpine'  
@@ -22,6 +23,7 @@ pipeline {
             }
         }
         
+        */
         stage('Test') {
             agent {
                 docker {
@@ -51,7 +53,7 @@ pipeline {
                     npm i serve
                     node_modules/.bin/serve -s build &
                     sleep 10
-                    npx playwright test
+                    npx playwright test --reporter=html
                 '''
             }
         }         
